@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, Date, Computed
 from sqlalchemy.ext.hybrid import hybrid_property
-from app.database import Base
+from database import Base
 
 class Bookings(Base):
      __tablename__ = 'bookings'
