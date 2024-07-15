@@ -1,5 +1,5 @@
 """базовый класс для работы с БД"""
-from sqlalchemy import select
+from sqlalchemy import select, insert
 
 from app.database import async_session
 
@@ -16,7 +16,7 @@ class BaseService:
         
         
     @classmethod
-    async def find_one_or_none(cls, filters):
+    async def find_one_or_none(cls, **filters):
         async with async_session() as session:
             query = select(cls.model).filter_by(**filters)
             res = await session.execute(query)
@@ -28,3 +28,11 @@ class BaseService:
             query = select(cls.model).filter_by(**filters)
             res = await session.execute(query)
             return res.scalars().all()
+    
+    
+    @classmethod
+    async def insert_data(cls, **data):
+        async with async_session() as session:
+            query = insert(cls.model).values(**data)
+            await session.execute(query)
+            await session.commit()
