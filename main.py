@@ -3,7 +3,7 @@ import uvicorn
 from pydantic import BaseModel
 from typing import Optional
 from datetime import date
-from bookings.router import router as booking_router
+from app.bookings.router import router as booking_router
 
 app = FastAPI()
 
