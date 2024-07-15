@@ -8,9 +8,9 @@ class BookingsSchema(BaseModel):
     date_from: date
     date_to: date
     price: int
-    # total_costs: int #TODO: добавить эти поля в БД
-    # total_days : int
+    total_costs: int
+    total_days : int
+    
     class Config:
         orm_mode = True
-        from_attributes = True
     
