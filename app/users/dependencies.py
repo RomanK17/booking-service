@@ -18,7 +18,7 @@ def get_jwt_token(request: Request) -> Optional[str]:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Вы не авторизованы!')
     
 
-async def get_current_user(token: str = Depends(get_jwt_token)) -> Users:
+async def get_current_user_id(token: str = Depends(get_jwt_token)) -> Users:
         try:
             res = jwt.decode(token, settings.SECRET_KEY, settings.ALGORITM)
         except JWTError:
