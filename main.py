@@ -36,15 +36,6 @@ class SearchHotelsArgs(BaseModel):
 @app.get("/hotels")
 def get_hotels( search_args : SearchHotelsArgs = Depends()) -> list[SchemaHotel]:
     return search_args
- 
-class SchemaBooking(BaseModel):
-    room_id : int
-    date_from: date
-    date_to: date
-
-@app.post('/bookings')
-def add_booking(booking: SchemaBooking):
-    pass
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

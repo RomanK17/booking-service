@@ -15,4 +15,9 @@ class UserAlredyExistsException(BookingException):
 class UserNotRegisteredException(BookingException):
     status_code=status.HTTP_401_UNAUTHORIZED
     detail='Пользователя с таким email или паролем не существует!'
+
+
+class RoomCannotBeBooked(BookingException):
+    status_code=status.HTTP_409_CONFLICT
+    detail='Номер не может быть забронирован!'
     
