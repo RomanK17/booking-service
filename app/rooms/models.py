@@ -2,7 +2,7 @@ from sqlalchemy import JSON, Column, Integer, String, ForeignKey, Date, Computed
 from app.database import Base
 
 
-class Rooms(Base):
+class  Rooms(Base):
      __tablename__ = 'rooms'
      id = Column(Integer, primary_key=True, nullable=False)
      hotel_id = Column(Integer, ForeignKey('hotels.id'), nullable=False )
