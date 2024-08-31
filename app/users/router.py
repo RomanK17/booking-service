@@ -7,7 +7,7 @@ from .auth import create_access_token, get_password_hash, verify_password, authe
 from .dependencies import get_current_user_id
 
 
-router = APIRouter(prefix='/auth', tags=['Пользователи'])
+router = APIRouter(prefix='/auth', tags=['Users'])
 
 @router.post('/register')
 async def register_user(user_data: SchemaUserAuth):
