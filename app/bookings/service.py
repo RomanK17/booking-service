@@ -25,7 +25,7 @@ class BookingServise(BaseService):
 
         SELECT rooms.quantity - COUNT(booked_rooms.id) FROM rooms
         LEFT JOIN booked_rooms ON booked_rooms.room_id = rooms.id
-        WHERE rooms.id=1
+        WHERE rooms.id=booked_rooms.id # TODO: WHERE скорее всего не обязательно
         GROUP BY rooms.quantity, booked_rooms.room_id
         """
         async with async_session() as session:
