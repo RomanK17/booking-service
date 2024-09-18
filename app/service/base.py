@@ -1,5 +1,5 @@
 """базовый класс для работы с БД"""
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, delete
 
 from app.database import async_session
 
@@ -36,3 +36,14 @@ class BaseService:
             query = insert(cls.model).values(**data)
             await session.execute(query)
             await session.commit()
+
+    @classmethod
+    async def delete_data(cls, **filters):
+        """Два варианта, как можно написать этот метод:
+        1. Сразу удаляем все записи (если их нет, то ничего не удалится). Проблема в том, что тогда мы не можем узнать, удалялось ли что-то
+        2. Делаем запрос -> если находтся забронированные номера, то мы их удаляем."""
+        async with async_session() as session:
+            await session.execute(delete(cls.model).filter_by(**filters))
+            await session.commit()
+
+
