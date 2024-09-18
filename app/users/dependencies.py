@@ -18,7 +18,7 @@ def get_jwt_token(request: Request) -> Optional[str]:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Вы не авторизованы!')
     
 
-async def get_current_user_id(token: str = Depends(get_jwt_token)) -> Users:
+async def get_current_user_id(token: str = Depends(get_jwt_token)) -> int:
         try:
             res = jwt.decode(token, settings.SECRET_KEY, settings.ALGORITM)
         except JWTError:
@@ -32,5 +32,5 @@ async def get_current_user_id(token: str = Depends(get_jwt_token)) -> Users:
         user = await UserService.find_by_id(int(user_id))
         if not user:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f'пользователя с id {user_id} не существует в базе данных')
-        return user # TODO: почему возвращается юзер, а не id?
+        return user.id
 
