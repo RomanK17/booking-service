@@ -1,10 +1,10 @@
 """отдельный слой для работиы с БД, чтобы эта логика была отделена от роутера"""
 from sqlalchemy import func, select, and_, or_, insert
 from datetime import date
-from app.rooms.models import Rooms
+from app.hotels.rooms.models import Rooms
 from app.service.base import BaseService
 from app.bookings.models import Bookings
-from app.database import engine, async_session
+from app.database import async_session
 
 
 class BookingServise(BaseService):
