@@ -1,11 +1,14 @@
 from sqlalchemy import JSON, Column, Integer, String
+from sqlalchemy.orm import relationship
 from app.database import Base
 
 class Hotels(Base):
-     __tablename__ = 'hotels'
+     __tablename__ = 'Hotels'
      id = Column(Integer, primary_key=True, nullable=False)
      name = Column(String, nullable=False )
      location = Column(String, nullable=False )
      services = Column(JSON)
      room_quantity = Column(Integer, nullable=False)
      image_id = Column(Integer)
+
+     rooms = relationship("Rooms", back_populates="hotel")
