@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 
 class  Rooms(Base):
-     __tablename__ = 'Rooms'
+     __tablename__ = 'rooms'
      id = Column(Integer, primary_key=True, nullable=False)
      hotel_id = Column(Integer, ForeignKey('hotels.id'), nullable=False )
      name = Column(String, nullable=False )
@@ -14,4 +14,4 @@ class  Rooms(Base):
      quantity = Column(Integer, nullable=False )
      image_id = Column(Integer)
 
-     hotel = relationship("Hotels", back_populates="rooms")
+     hotel = relationship("hotels", back_populates="rooms")

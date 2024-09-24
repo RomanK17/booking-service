@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from app.database import Base
 
 class Hotels(Base):
-     __tablename__ = 'Hotels'
+     __tablename__ = 'hotels'
      id = Column(Integer, primary_key=True, nullable=False)
      name = Column(String, nullable=False )
      location = Column(String, nullable=False )
@@ -11,4 +11,4 @@ class Hotels(Base):
      room_quantity = Column(Integer, nullable=False)
      image_id = Column(Integer)
 
-     rooms = relationship("Rooms", back_populates="hotel")
+     rooms = relationship("rooms", back_populates="hotel")
